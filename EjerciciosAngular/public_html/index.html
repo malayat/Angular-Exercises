@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Prueba Timeout app Angular</title>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+        <script src="//code.angularjs.org/1.2.19/i18n/angular-locale_es-es.js"></script>
+        <script src="filtros.js"></script>
+        <meta charset="UTF-8">
+    </head>
+    <!--    <body ng-controller="PruebaController">
+            Se ha producido el evento?? {{evento}}
+        </body>-->
+    <!--        <body ng-controller="PruebaController">
+                El area es: {{area}}
+            </body>-->
+
+    <!--    <body ng-controller="PruebaController">
+            El area con servicios es: {{areaRec}}
+        </body>-->
+
+    <!--    <body ng-controller="Controlador">
+            <div>{{mensaje}}</div>
+            <form>
+                <input id="nota" type="text" ng-model="numero"/>
+            </form>
+    
+        </body>-->
+
+    <body ng-controller="Controlador">
+        <div>Valor moneda 4 decimales = {{ moneda | number:4}}</div>
+        <div>Valor moneda 2 decimales = {{ moneda | currency}}</div>
+        
+        <div>Fecha como short = {{fecha | date :"short"}}</div>
+        <div>Fecha como medium = {{fecha | date :"medium"}}</div>
+        <div>Fecha como fullDate = {{fecha | date :"fullDate"}}</div>
+        <div>Fecha como longDate = {{fecha | date :"longDate"}}</div>
+        <div>Fecha como mediumDate = {{fecha | date :"mediumDate"}}</div>
+        <div>Fecha como shortDate = {{fecha | date :"shortDate"}}</div>
+        <div>Fecha como shortTime = {{fecha | date :"shortTime"}}</div>
+        <div>Fecha a secas= {{fecha | date}}</div>
+        <div>Fecha como dd/MM/yyyy hh:mm a = {{fecha | date :"dd/MM/yyyy hh:mm a"}}</div>
+        
+        <br>
+        <br>
+        
+        <table>
+            <tbody>
+                <tr ng-repeat="provincia in provincias | orderBy : '-nomProv' ">
+                    <td>{{provincia.codProv}}</td>
+                    <td>{{provincia.nomProv}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <br>
+        <br>
+        <input type="text" ng-model="textoFiltro"/>
+        <table>
+            <tbody>
+                <!--<tr ng-repeat="provincia in provincias | filter : {nomProv:'a', canton : 'a'}">-->
+                <tr ng-repeat="provincia in provincias | filter : {$ : textoFiltro} : true  ">
+                <!--<tr ng-repeat="provincia in provincias | filter : filtroHabitantes">-->
+                    <td>{{provincia.codProv}}</td>
+                    <td>{{provincia.nomProv}}</td>
+                    <td>{{provincia.canton}}</td>
+                    <td>{{provincia.habitantes}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </body>
+</html>
